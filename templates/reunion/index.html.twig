@@ -1,0 +1,11 @@
+{# templates/reunion/index.html.twig #}
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1> Reunions </h1>
+    <ul>
+{% for reunion in reunions %}
+    <li>{{ reunion.dates|date('Y-m-d') }} : {{ reunion.nom }}</li>
+{% endfor %}
+        <li><a href="{{ path('reunion_add') }}">Ajouter une réunion</a></li>
+    </ul>
+{% endblock %}
