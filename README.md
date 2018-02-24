@@ -34,6 +34,12 @@ Ouvrer le fichier .env et modifier la ligne DATABASE_URL pour faire correspondre
 Générer les assets du projet:
 `./node_modules/.bin/encore production`
 
+### Alimenter la base de donnée
+```
+php bin/console doctrine:migration:diff
+php bin/console doctrine:migration:migrate
+```
+
 ### Démarer le serveur
 `php bin/console server:run`
 
