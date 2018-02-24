@@ -1,7 +1,19 @@
 {# templates/reunion/add.html.twig #}
 {% extends 'base.html.twig' %}
 {% block body %}
+    <h1> Création d'une nouvelle réunion</h1>
 {{ form_start(form) }}
-{{ form_widget(form) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.nom) }}
+
+    {{ form_widget(form.dates) }}
+    <a id="add_category_dates" class="btn btn-primary">Ajouter une date</a>
+
 {{ form_end(form) }}
+    <a href="{{ path('reunion') }}" class="btn">Retour</a>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+<script src="{{ asset('build/js/addReunion.js') }}"></script>
 {% endblock %}

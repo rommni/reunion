@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Compte-Rendu : {{ reunion.nom }}</h1>
+    <table class="table table-striped table-hover">
+        <thead class=thead-dark">
+        <th>#</th>
+        <th{% if pagination.isSorted('o.titre') %} class="sorted" {% endif %} scope="col">{{ knp_pagination_sortable(pagination, 'Titre', 'o.titre') }}</th>
+        <th{% if pagination.isSorted('o.echanges') %} class="sorted" {% endif %} scope="col">{{ knp_pagination_sortable(pagination, 'Echanges', 'o.echanges') }}</th>
+        </thead>
+
+        {% for odj in pagination %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ odj.titre }}</td>
+                <td>{{ odj.echanges }}</td>
+            </tr>
+            {% endfor %}
+
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+    <a href="{{ path("reunion") }}" class ="btn btn-primary">Retour</a>
+{% endblock %}

@@ -3,10 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Architecture N-Tiers{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('build/css/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('build/css/main.css') }}">
+        {% endblock %}
     </head>
     <body>
+    <div class="container">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    </div>
+        {% block javascripts %}
+            <script src="{{ asset('build/js/bootstrap.js') }}"></script>
+
+        {% endblock %}
     </body>
 </html>

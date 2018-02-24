@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>{% for date in reunion.dates %}{{ date|date("d/m/Y")}} {% if date != reunion.dates|last%} - {% endif %}  {% endfor %}: {{ reunion.nom }}</h1>
+<h2><a href="{{ path('reunion_cr', {'id' : reunion.id}) }}">Compte-Rendu</a></h2>
+    {{ form_start(form) }}
+    {{ form_widget(form.odjs) }}
+    <a id="add_category_odjs" class="btn btn-primary">Ajouter Ordre du Jour</a> <a href="{{ path('reunion') }}" class="btn btn-secondary">Retour</a>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+    <script>var reunion_id = {{ reunion.id }}</script>
+    <script src="{{ asset('build/js/showReunion.js') }}"></script>
+{% endblock %}
+
+{#{% for odj in odjs %}
+    <button type="button" class="btn btn-info" data-toggle="collapse" date-target="#text_{{ loop.index }}">{{ odj.titre }}></button>
+    <div id="text_{{ loop.index }}">{{ odj.echanges }}</div>
+{% endfor %}#}

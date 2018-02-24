@@ -1,28 +1,32 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: romain
+ * Date: 2/24/18
+ * Time: 4:30 PM
+ */
+
 namespace App\Form;
 
 
+use App\Entity\Reunion;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use App\Entity\Reunion;
 
-class ReunionType extends AbstractType
+class OdjsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('nom')
-            ->add('dates', CollectionType::class, array(
-                'entry_type' => DateType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-            ))
-            ->add('enregistrer', SubmitType::class)
-        ;
+       $builder->add('odjs', CollectionType::class, array(
+           'entry_type' => OdjType::class,
+           'allow_add' => true,
+           'allow_delete' => true,
+           'entry_options' => array(
+               'label' => 'Ordre du jour'
+           )
+       ));
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -31,5 +35,5 @@ class ReunionType extends AbstractType
             'data_class' => Reunion::class,
         ));
     }
+
 }
-?>

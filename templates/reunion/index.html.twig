@@ -4,7 +4,7 @@
     <h1> Reunions </h1>
     <ul>
 {% for reunion in reunions %}
-    <li>{{ reunion.dates|date('Y-m-d') }} : {{ reunion.nom }}</li>
+    <li><a href="{{ path('reunion_show', {'id' : reunion.id}) }}">{% for date in reunion.dates %}{{ date|date("d/m/Y")}} {% if date != reunion.dates|last%} - {% endif %}  {% endfor %} : {{ reunion.nom }}</a>  :  <a href="{{ path('reunion_cr', {'id' : reunion.id}) }}" class="btn btn-primary">Compte-Rendu</a><a href="{{ path('reunion_delete', {id : reunion.id}) }}" class="btn btn-danger">Supprimer</a> </li>
 {% endfor %}
         <li><a href="{{ path('reunion_add') }}">Ajouter une réunion</a></li>
     </ul>

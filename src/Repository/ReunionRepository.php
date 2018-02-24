@@ -13,6 +13,7 @@ class ReunionRepository extends ServiceEntityRepository
         parent::__construct($registry, Reunion::class);
     }
 
+
     /*
     public function findBySomething($value)
     {

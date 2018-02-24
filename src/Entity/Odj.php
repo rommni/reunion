@@ -17,24 +17,33 @@ class Odj
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Reunion")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Reunion", inversedBy="odjs")
      */
     private $reunion;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $titre;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $echanges;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $crOfficiel;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
 
     /**
      * @return mixed
